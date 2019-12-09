@@ -2,6 +2,7 @@
 import { render } from "react-dom";
 import { Word } from "../TextPages/Word";
 import { Line } from "../TextPages/Line";
+import { TableData } from "../TextPages/TableData";
 export class TextPage extends Component {
     static displayName = TextPage.name;
 
@@ -15,29 +16,13 @@ export class TextPage extends Component {
         return ( 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col">
-                        <div contenteditable="true" class="text-editor-box" onInput={this.ChangeDivTextEditor} onPaste={this.onPaste}>
-                            <div>фыв уцке цуке</div>
-                        </div>
+                    <div class="col-3">
+                        <div contenteditable="true" class="text-editor-box" onInput={this.ChangeDivTextEditor}>
+                            <div>фыв,уцке,цуке</div>
+                        </div>                       
                     </div>
-                    <div class="col">
-                        <table>
-                            <tr>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Age</th>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>Smith</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td>
-                                <td>94</td>
-                            </tr>
-                        </table>
+                    <div class="col-9">
+                        {React.createElement(TableData)}
                     </div>
                 </div>
             </div>
@@ -61,8 +46,8 @@ export class TextPage extends Component {
             //}               
             
 
-
-            render(React.createElement(Line, { textValue: listChildren[i].innerText }), listChildren[i]);         
+            var t = React.createElement(Line, { textValue: listChildren[i].innerText });
+            render(t, listChildren[i]);         
         }        
     }
 }

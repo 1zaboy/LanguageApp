@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LanguageApp.WorkWithDb;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,7 +25,7 @@ namespace LanguageApp.Controllers
         [Route("IsLoginCompleted")]
         public bool IsLoginCompleted(string name, string password)
         {            
-            return mainWorkWithDb.IsUserAvailability(name, password);            
+            return mainWorkWithDb.LoginUser(name, password);            
         }
 
         [Route("AddUser")]
@@ -39,6 +40,12 @@ namespace LanguageApp.Controllers
             {
                 return false;
             }
+        }
+
+        [Route("GetUsers")]
+        public string GetUsers()
+        {
+            return JsonConvert.SerializeObject(mainWorkWithDb.GetAllUsers());            
         }
     }
 }

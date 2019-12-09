@@ -7,7 +7,7 @@ namespace LanguageApp.WorkWithDb.DbCardClass
 {
     public class Language
     {
-        public int IdTable { get; set; }
+        public Int64 IdTable { get; set; }
         public string NameLanguage { get; set; }
     }
 }

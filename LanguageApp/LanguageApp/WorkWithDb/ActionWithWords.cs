@@ -9,55 +9,21 @@ using System.Data.SQLite;
 
 namespace LanguageApp.WorkWithDb
 {
-    public class MainWorkWithDb : DbCon
+    public class ActionWithWords : DbCon
     {
-        public MainWorkWithDb()
+        public ActionWithWords()
         {
-            // Register the factory
             DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
         }
-
-        public List<Users> GetUsersWithDb()
+        public string getLanguageWord(string textword)
         {
-            List<Users> LUsers_return = new List<Users>();
-            try
+            if (IsWordInDb(textword))
             {
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
-                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
-                {
-                    connection.ConnectionString = "Data Source = " + ConnectionString;
-                    connection.Open();
-
-                    using (SQLiteCommand command = new SQLiteCommand(connection))
-                    {
-                        command.CommandText = @"SELECT * FROM Users";
-                        command.CommandType = CommandType.Text;
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            LUsers_return.Add(new Users() { IdTable = (int)reader["IdTable"], Password = (string)reader["Password"], UserName = (string)reader["UserName"] });
-                        }
-                    }
-                }
-                return LUsers_return;
+                return _getLanWord(textword);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                return null;
-            }
+            return "";
         }
-
-        public bool LoginUser(string name, string password)
-        {
-            var t = IsUserAvailability(name, password);
-            if (t)
-                return UserLoginDTUpdate(name, password);
-            return false;
-
-        }
-
-        private bool UserLoginDTUpdate(string name, string password)
+        private bool IsWordInDb(string textword)
         {
             try
             {
@@ -70,10 +36,15 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"UPDATE Users SET Users.DateLogin = datetime('now') WHERE Users.UserName = '" + name + "' AND Users.Password = '" + password + "'";
+                        command.CommandText = @"select count(*) as 'count' from Words WHERE TextWord = '" + textword + "'";
                         command.CommandType = CommandType.Text;
-                        var reader = 1;// command.ExecuteNonQuery();
-                        if (reader != 1)
+                        var reader = command.ExecuteReader();
+                        int countItem = 0;
+                        while (reader.Read())
+                        {
+                            countItem = (int)reader["count"];
+                        }
+                        if (countItem == 0)
                             throw new Exception("Error");
 
                     }
@@ -86,7 +57,8 @@ namespace LanguageApp.WorkWithDb
                 return false;
             }
         }
-        private bool IsUserAvailability(string name, string password)
+
+        private string _getLanWord(string textword)
         {
             try
             {
@@ -99,17 +71,59 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"SELECT * FROM Users WHERE UserName = '" + name + "' AND Password = '" + password + "'";
+                        command.CommandText = @"select Language.Namelanguage as 'Namelanguage' Words WHERE TextWord = '" + textword + "' INNER JOIN Language ON Words.IdLanguage = Language.IdTable";
                         command.CommandType = CommandType.Text;
                         var reader = command.ExecuteReader();
+                        string strItem = "";
                         while (reader.Read())
                         {
-                            LUsers_return.Add(new Users() { IdTable = (Int64)reader["IdTable"], Password = (string)reader["Password"], UserName = (string)reader["UserName"] });
-                            break;
+                            strItem = (string)reader["Namelanguage"];
                         }
+                        if (strItem == "")
+                            throw new Exception("Error");
+                        return strItem;
                     }
                 }
-                return LUsers_return.Count() > 0 ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return ex.Message.ToString();
+            }
+        }
+        
+        public bool setSteteRequasts(int userid,string wordtext)
+        {
+            try
+            {
+                List<Users> LUsers_return = new List<Users>();
+                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
+                {
+                    connection.ConnectionString = "Data Source = " + ConnectionString;
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand(connection))
+                    {
+                        command.CommandText = "select Words.IdTable as 'IdTable' from Words where Words.TextWord = " + wordtext;
+                        command.CommandType = CommandType.Text;
+                        var reader1 = command.ExecuteReader();
+                        int wordid = -1;
+                        while (reader1.Read())
+                        {
+                            wordid = (int)reader1["IdTable"];
+                        }
+
+                        command.CommandText = "INSERT INTO Requasts(UserId, DTRequast, WordId) VALUES('" + userid + "', '" + DateTime.Now.ToString() + "', '" + wordid + "'); ";
+                        command.CommandType = CommandType.Text;
+                        var reader2 = command.ExecuteNonQuery();                                                
+                        if (reader2 != 1)
+                            throw new Exception("Error");
+                        return true;
+                    }
+                }
+
             }
             catch (Exception ex)
             {
@@ -117,34 +131,8 @@ namespace LanguageApp.WorkWithDb
                 return false;
             }
         }
-        public void AddUser(string name, string password)
-        {
-            try
-            {
-                if (IsUserAvailability(name, password))
-                    return;
 
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
-                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
-                {
-                    connection.ConnectionString = "Data Source = " + ConnectionString;
-                    connection.Open();
-
-                    using (SQLiteCommand command = new SQLiteCommand(connection))
-                    {
-                        command.CommandText = @"INSERT INTO Users(UserName, Password, DateLogin) VALUES ('" + name + "','" + password + "','"+DateTime.Now.ToString()+"');";
-                        command.CommandType = CommandType.Text;
-                        var reader = command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-            }
-        }
-
-        public List<Users> GetAllUsers()
+        public bool addWord(string textWord, int LanId)
         {
             try
             {
@@ -156,23 +144,24 @@ namespace LanguageApp.WorkWithDb
                     connection.Open();
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
-                    {
-                        command.CommandText = @"SELECT * FROM Users";
+                    {                       
+                        command.CommandText = "INSERT INTO Words(TextWord, IdLanguage) VALUES('" + textWord + "', '" + LanId + "'); ";
                         command.CommandType = CommandType.Text;
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {                            
-                            LUsers_return.Add(new Users() { IdTable = (Int64)reader["IdTable"], Password = (string)reader["Password"], UserName = (string)reader["UserName"], /*DateLogin = (DateTime)reader["DateLogin"]*/ });                            
-                        }
+                        var reader2 = command.ExecuteNonQuery();
+                        if (reader2 != 1)
+                            throw new Exception("Error");
+                        return true;
                     }
                 }
-                return LUsers_return;
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
-                return new List<Users>();
+                return false;
             }
         }
     }
+
+
 }

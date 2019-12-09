@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { TextPage } from '../TextPages/MainPageForText';
+import { render } from "react-dom";
+import { $ } from "jquery";
+import { Router } from 'react-router-dom';
+import { browserHistory } from 'react-router'
 
 export class Login extends Component {
     static displayName = Login.name;
@@ -64,6 +69,8 @@ export class Login extends Component {
             this.setState({ ResponseText: data });
             if (data == false) {
                 alert("Error enter name or/and password");
+            } else {                
+                //browserHistory.push("/TextPages");
             }
         }.bind(this);
         xhr.send();

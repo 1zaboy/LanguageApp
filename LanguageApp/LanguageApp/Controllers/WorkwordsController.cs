@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using LanguageApp.WorkWithDb;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,12 +27,19 @@ namespace LanguageApp.Controllers
             LanChar.Add("abcdefghijklmnopqrstuvwxyz");
             LanChar.Add("абвгдежзийклмнопрстуфхцчшщъьюя");
         }
-        
-        
 
 
-        public string GetLanguageWords(string str)
+        private ActionWithWords AWW = new ActionWithWords();
+        [Route("GetLanguageWords")]
+        public string GetLanguageWords(int userid, string str)
         {
+            var LanItem = AWW.getLanguageWord(str);
+            if (LanItem != "")
+            {
+                AWW.setSteteRequasts(userid, str);
+                return LanItem;
+            }
+
             var arrayWord = str.Split(' ');
             foreach(var item in arrayWord)
             {
@@ -54,6 +62,13 @@ namespace LanguageApp.Controllers
                 }
             }
             return "";
+        }
+        
+        
+        [Route("InsertWordInDB")]
+        public bool InsertWordInDB(string word, int LanId)
+        {
+            return AWW.addWord(word, LanId);
         }
     }
 }
