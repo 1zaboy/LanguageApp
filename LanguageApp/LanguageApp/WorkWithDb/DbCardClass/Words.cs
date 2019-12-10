@@ -9,7 +9,6 @@ namespace LanguageApp.WorkWithDb.DbCardClass
     {
         public int Table { get; set; }
         public string TextWord { get; set; }
-        public int IdLanguage { get; set; }
-        public int UserIdAddThisWord { get; set; }
+        public int IdLanguage { get; set; }        
     }
 }

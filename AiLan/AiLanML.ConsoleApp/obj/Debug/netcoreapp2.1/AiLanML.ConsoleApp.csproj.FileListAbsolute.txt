@@ -1,0 +1,14 @@
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.ConsoleApp.deps.json
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.ConsoleApp.runtimeconfig.json
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.ConsoleApp.runtimeconfig.dev.json
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.ConsoleApp.dll
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.ConsoleApp.pdb
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.Model.dll
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\AiLanML.Model.pdb
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\obj\Debug\netcoreapp2.1\AiLanML.ConsoleApp.csprojAssemblyReference.cache
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\obj\Debug\netcoreapp2.1\AiLanML.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\obj\Debug\netcoreapp2.1\AiLanML.ConsoleApp.AssemblyInfo.cs
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\obj\Debug\netcoreapp2.1\AiLanML.ConsoleApp.csproj.CopyComplete
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\obj\Debug\netcoreapp2.1\AiLanML.ConsoleApp.dll
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\obj\Debug\netcoreapp2.1\AiLanML.ConsoleApp.pdb
+C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.ConsoleApp\bin\Debug\netcoreapp2.1\MLModel.zip
