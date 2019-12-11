@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj": {}
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj": {
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj",
+        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj",
         "projectName": "AiLanML.ConsoleApp",
-        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj",
+        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.ConsoleApp\\AiLanML.ConsoleApp.csproj",
         "packagesPath": "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.ConsoleApp\\obj\\",
+        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.ConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Artyom Drozdovskiy\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
-                "projectPath": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj"
+              "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
+                "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj"
               }
             }
           }
@@ -67,14 +67,14 @@
         }
       }
     },
-    "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
+        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
         "projectName": "AiLanML.Model",
-        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
+        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
         "packagesPath": "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\source\\repos\\AiLan\\AiLanML.Model\\obj\\",
+        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Artyom Drozdovskiy\\AppData\\Roaming\\NuGet\\NuGet.Config",

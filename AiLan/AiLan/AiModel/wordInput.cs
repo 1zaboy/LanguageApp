@@ -1,8 +1,8 @@
 ﻿using Microsoft.ML.Data;
 
-namespace AiLan
+namespace AiLan.AiModel
 {
-    class SpamInput
+    class wordInput
     {
         [LoadColumn(0)]
         public string Label { get; set; }
