@@ -23,11 +23,11 @@ namespace AiLan
         {
             SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");            
 
-            string sqlCommand = "SELECT Words.TextWord, Language.Namelanguage from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable ORDER BY RANDOM() LIMIT 1";
+            string sqlCommand = "SELECT Words.TextWord as 'Label', Language.Namelanguage as 'Message' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable ORDER BY RANDOM() LIMIT 1";
 
             DatabaseSource dbSource = new DatabaseSource(SQLiteFactory.Instance, ConnectionString, sqlCommand);
 
-            DatabaseLoader loader = mlContext.Data.CreateDatabaseLoader<SqliteWordTableModel>();
+            DatabaseLoader loader = mlContext.Data.CreateDatabaseLoader<wordInput>();
             IDataView data = loader.Load(dbSource);
             return data;
         }

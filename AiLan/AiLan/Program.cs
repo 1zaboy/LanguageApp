@@ -279,7 +279,7 @@ namespace AiLan
             // STEP 1: Common data loading configuration
             WorkWithDb workWithDb = new WorkWithDb();
             var trainingDataView = workWithDb.GetDataFromSQLite(mlContext);//mlContext.Data.LoadFromTextFile<wordInput>(TrainDataPath, hasHeader: true);
-            var testDataView = mlContext.Data.LoadFromTextFile<wordInput>(TestDataPath, hasHeader: true);
+            //var testDataView = mlContext.Data.LoadFromTextFile<wordInput>(TestDataPath, hasHeader: true);
 
 
             // STEP 2: Common data process configuration with pipeline data transformations
@@ -300,9 +300,9 @@ namespace AiLan
             ITransformer trainedModel = trainingPipeline.Fit(trainingDataView);
 
             // STEP 5: Evaluate the model and show accuracy stats
-            Console.WriteLine("===== Evaluating Model's accuracy with Test data =====");
-            var predictions = trainedModel.Transform(testDataView);
-            var metrics = mlContext.MulticlassClassification.Evaluate(predictions, "Label", "Score");            
+            //Console.WriteLine("===== Evaluating Model's accuracy with Test data =====");
+            //var predictions = trainedModel.Transform(testDataView);
+            //var metrics = mlContext.MulticlassClassification.Evaluate(predictions, "Label", "Score");            
 
             // STEP 6: Save/persist the trained model to a .ZIP file
             mlContext.Model.Save(trainedModel, trainingDataView.Schema, ModelPath);

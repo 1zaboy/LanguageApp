@@ -32,3 +32,37 @@ C:\Users\Artyom Drozdovskiy\source\repos\ParserData\ParserData\bin\Debug\netcore
 C:\Users\Artyom Drozdovskiy\source\repos\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.pdb
 C:\Users\Artyom Drozdovskiy\source\repos\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.dll
 C:\Users\Artyom Drozdovskiy\source\repos\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.pdb
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.exe
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.deps.json
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.runtimeconfig.json
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.runtimeconfig.dev.json
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\ParserData.pdb
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\SQLitePCLRaw.provider.dynamic_cdecl.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-armel\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-musl-x64\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libe_sqlite3.so
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libe_sqlite3.dylib
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\e_sqlite3.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.csprojAssemblyReference.cache
+E:\GitHub\LanguageApp\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.AssemblyInfoInputs.cache
+E:\GitHub\LanguageApp\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.AssemblyInfo.cs
+E:\GitHub\LanguageApp\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.csproj.CopyComplete
+E:\GitHub\LanguageApp\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.dll
+E:\GitHub\LanguageApp\ParserData\ParserData\obj\Debug\netcoreapp3.1\ParserData.pdb

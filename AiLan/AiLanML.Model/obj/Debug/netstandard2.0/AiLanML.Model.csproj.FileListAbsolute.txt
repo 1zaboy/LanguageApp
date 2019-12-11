@@ -7,3 +7,12 @@ C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.Model\obj\Debug\netstanda
 C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.dll
 C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.pdb
 C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\MLModel.zip
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\MLModel.zip
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\AiLanML.Model.deps.json
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\AiLanML.Model.dll
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\AiLanML.Model.pdb
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.csprojAssemblyReference.cache
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.AssemblyInfoInputs.cache
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.AssemblyInfo.cs
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.dll
+E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.pdb

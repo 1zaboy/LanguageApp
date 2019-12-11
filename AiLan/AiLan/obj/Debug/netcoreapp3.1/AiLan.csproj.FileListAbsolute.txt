@@ -31,3 +31,39 @@ C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLan\bin\Debug\netcoreapp3.1\Mic
 C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLan\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
 C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.dll
 C:\Users\Artyom Drozdovskiy\source\repos\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.pdb
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\MLModel.zip
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLan.exe
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLan.deps.json
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLan.runtimeconfig.json
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLan.runtimeconfig.dev.json
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLan.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLan.pdb
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.Core.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.Data.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.KMeansClustering.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.PCA.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.StandardTrainers.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.Transforms.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.CpuMath.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Microsoft.ML.DataView.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libLdaNative.so
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libLdaNative.dylib
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\LdaNative.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\LdaNative.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\netstandard2.0\SQLite.Interop.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLanML.Model.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\bin\Debug\netcoreapp3.1\AiLanML.Model.pdb
+E:\GitHub\LanguageApp\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.csprojAssemblyReference.cache
+E:\GitHub\LanguageApp\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.AssemblyInfoInputs.cache
+E:\GitHub\LanguageApp\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.AssemblyInfo.cs
+E:\GitHub\LanguageApp\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.csproj.CopyComplete
+E:\GitHub\LanguageApp\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.dll
+E:\GitHub\LanguageApp\AiLan\AiLan\obj\Debug\netcoreapp3.1\AiLan.pdb
