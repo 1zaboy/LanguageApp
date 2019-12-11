@@ -25,7 +25,7 @@ namespace AiLan
 
             string sqlCommand = "SELECT Words.TextWord as 'Label', Language.Namelanguage as 'Message' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable ORDER BY RANDOM() LIMIT 1";
 
-            DatabaseSource dbSource = new DatabaseSource(SQLiteFactory.Instance, ConnectionString, sqlCommand);
+            DatabaseSource dbSource = new DatabaseSource(factory, ConnectionString, sqlCommand);
 
             DatabaseLoader loader = mlContext.Data.CreateDatabaseLoader<wordInput>();
             IDataView data = loader.Load(dbSource);

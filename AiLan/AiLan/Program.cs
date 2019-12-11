@@ -244,7 +244,7 @@ namespace AiLan
     //    } 
     class Program
     {
-        
+
         private static string AppPath => Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
 
         private static string BaseDatasetsRelativePath = @"../../../../Data";
@@ -279,12 +279,30 @@ namespace AiLan
             // STEP 1: Common data loading configuration
             WorkWithDb workWithDb = new WorkWithDb();
             var trainingDataView = workWithDb.GetDataFromSQLite(mlContext);//mlContext.Data.LoadFromTextFile<wordInput>(TrainDataPath, hasHeader: true);
+            //var trainingDataView = mlContext.Data.LoadFromTextFile<wordInput>("E:/GitHub/LanguageApp/AiLan/AiLan/SMSSpamCollection.tsv", hasHeader: true, separatorChar: '\t');            
             //var testDataView = mlContext.Data.LoadFromTextFile<wordInput>(TestDataPath, hasHeader: true);
+
+            var trainTestData = mlContext.Data.TrainTestSplit(trainingDataView);
+
+
+
+            var CatogoriesTranformer = mlContext.Transforms.Conversion.ConvertType(nameof(wordInput.Label), outputKind: Microsoft.ML.Data.DataKind.Double);
+
+
 
 
             // STEP 2: Common data process configuration with pipeline data transformations
             var dataProcessPipeline = mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: "KeyColumn", inputColumnName: nameof(wordInput.Label))
-                .Append(mlContext.Transforms.Concatenate("Features", nameof(wordInput.Message)).AppendCacheCheckpoint(mlContext));
+                .Append(mlContext.Transforms.Text.FeaturizeText("FeaturesText", new Microsoft.ML.Transforms.Text.TextFeaturizingEstimator.Options
+                {
+                    WordFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options { NgramLength = 2, UseAllLengths = true },
+                    CharFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options { NgramLength = 3, UseAllLengths = false },
+                }, "Message"))
+                .Append(mlContext.Transforms.CopyColumns("Features", "FeaturesText"))
+                .Append(mlContext.Transforms.NormalizeLpNorm("Features", "Features"))
+                .AppendCacheCheckpoint(mlContext);
+                //.Append(mlContext.Transforms.Concatenate("Features", nameof(wordInput.Message))
+                //.AppendCacheCheckpoint(mlContext));
 
             // Use in-memory cache for small/medium datasets to lower training time. 
             // Do NOT use it (remove .AppendCacheCheckpoint()) when handling very large datasets. 
@@ -310,7 +328,7 @@ namespace AiLan
         }
 
 
-       
+
         private static void TestSomePredictions(MLContext mlContext)
         {
             //Test Classification Predictions with some hard-coded samples 
