@@ -254,8 +254,8 @@ namespace AiLan
         private static string TrainDataPath = GetAbsolutePath(TrainDataRelativePath);
         private static string TestDataPath = GetAbsolutePath(TestDataRelativePath);
 
-        private static string BaseModelsRelativePath = @"../../../MLModels";
-        private static string ModelRelativePath = $"{BaseModelsRelativePath}/WordClassificationModel.zip";
+        private static string BaseModelsRelativePath = @"MLModels";
+        private static string ModelRelativePath = $"{BaseModelsRelativePath}\\WordClassificationModel.zip";
 
         private static string ModelPath = GetAbsolutePath(ModelRelativePath);
         private static void Main(string[] args)
@@ -263,7 +263,7 @@ namespace AiLan
             // Create MLContext to be shared across the model creation workflow objects 
             // Set a random seed for repeatable/deterministic results across multiple trainings.
             var mlContext = new MLContext(seed: 0);
-
+            var strpath = ModelPath;
             //1.
             BuildTrainEvaluateAndSaveModel(mlContext);
 
@@ -292,16 +292,27 @@ namespace AiLan
 
 
             // STEP 2: Common data process configuration with pipeline data transformations
-            var dataProcessPipeline = mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: "KeyColumn", inputColumnName: nameof(wordInput.Label))
+            var dataProcessPipeline = mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: "KeyColumn", inputColumnName: "Label")
+                
+                // Required 
+                //Create a TextFeaturizingEstimator, which transforms a text column 
+                //into a featurized vector of Single that represents normalized 
+                //counts of n-grams and char-grams.
                 .Append(mlContext.Transforms.Text.FeaturizeText("FeaturesText", new Microsoft.ML.Transforms.Text.TextFeaturizingEstimator.Options
                 {
                     WordFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options { NgramLength = 2, UseAllLengths = true },
                     CharFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options { NgramLength = 3, UseAllLengths = false },
-                }, "Message"))
-                .Append(mlContext.Transforms.CopyColumns("Features", "FeaturesText"))
+                }, "Message"))               
+                //copy column
+                //Create a ColumnCopyingEstimator, which copies the data from the 
+                //column specified in inputColumnName to a new column: outputColumnName.
+                .Append(mlContext.Transforms.CopyColumns(outputColumnName: "Features", inputColumnName: "FeaturesText"))
+
                 .Append(mlContext.Transforms.NormalizeLpNorm("Features", "Features"))
+                //.Append(mlContext.Transforms.Conversion.MapKeyToValue("label", "PredictedLabel"))
+                //.Append(mlContext.Transforms.Concatenate("Features", nameof(wordInput.Message)))
                 .AppendCacheCheckpoint(mlContext);
-                //.Append(mlContext.Transforms.Concatenate("Features", nameof(wordInput.Message))
+                
                 //.AppendCacheCheckpoint(mlContext));
 
             // Use in-memory cache for small/medium datasets to lower training time. 
@@ -343,6 +354,7 @@ namespace AiLan
             // TrainingLabelValues on top of Score column represent original labels for i-th value in Score array.
             // Let's look how we can convert key value for PredictedLabel to original labels.
             // We need to read KeyValues for "PredictedLabel" column.
+
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
@@ -363,15 +375,22 @@ namespace AiLan
 
             Console.WriteLine("=====Predicting using model====");
             //Score sample 1
-            wordInput wordInput = new wordInput() { Message = "Привэт" };
+            wordInput wordInput = new wordInput() { Message = "хорошо" };
             var resultprediction1 = predEngine.Predict(wordInput);
 
-            Console.WriteLine($"Actual: setosa.     Predicted label and score:  {IrisFlowers[labelsArray[0]]}: {resultprediction1.Score[0]:0.####}");
-            Console.WriteLine($"                                                {IrisFlowers[labelsArray[1]]}: {resultprediction1.Score[1]:0.####}");
-            Console.WriteLine($"                                                {IrisFlowers[labelsArray[2]]}: {resultprediction1.Score[2]:0.####}");
-            Console.WriteLine($"                                                {IrisFlowers[labelsArray[3]]}: {resultprediction1.Score[3]:0.####}");
-            Console.WriteLine($"                                                {IrisFlowers[labelsArray[4]]}: {resultprediction1.Score[4]:0.####}");
+            Console.WriteLine($"Actual: setosa.     Predicted label and score:  : {resultprediction1.Score[0]:0.####}");
+            Console.WriteLine($"                                                : {resultprediction1.Score[1]:0.####}");
+            Console.WriteLine($"                                                : {resultprediction1.Score[2]:0.####}");
+            Console.WriteLine($"                                                : {resultprediction1.Score[3]:0.####}");
+            Console.WriteLine($"                                                : {resultprediction1.Score[4]:0.####}");
             Console.WriteLine();
+
+            //Console.WriteLine($"Actual: setosa.     Predicted label and score:  {IrisFlowers[labelsArray[0]]}: {resultprediction1.Score[0]:0.####}");
+            //Console.WriteLine($"                                                {IrisFlowers[labelsArray[1]]}: {resultprediction1.Score[1]:0.####}");
+            //Console.WriteLine($"                                                {IrisFlowers[labelsArray[2]]}: {resultprediction1.Score[2]:0.####}");
+            //Console.WriteLine($"                                                {IrisFlowers[labelsArray[3]]}: {resultprediction1.Score[3]:0.####}");
+            //Console.WriteLine($"                                                {IrisFlowers[labelsArray[4]]}: {resultprediction1.Score[4]:0.####}");
+            //Console.WriteLine();
 
         }
 

@@ -4,6 +4,9 @@ namespace AiLan.AiModel
 {
     class wordPrediction
     {
-        public float[] Score;
+        [ColumnName("label")]
+        public string Label;
+        //[ColumnName("PredictedLabel")]
+        public float[] Score { get; set; }
     }
 }

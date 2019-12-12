@@ -24,7 +24,7 @@ namespace AiLan
         {
             SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");            
 
-            string sqlCommand = "SELECT Words.TextWord as 'Label', Language.Namelanguage as 'Message' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable  LIMIT 1000";/*ORDER BY RANDOM()*/
+            string sqlCommand = "SELECT Words.TextWord as 'Message', Language.Namelanguage as 'Label' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable  LIMIT 1000";/*ORDER BY RANDOM()*/
 
             DatabaseSource dbSource = new DatabaseSource(factory, ConnectionString, sqlCommand);
 
