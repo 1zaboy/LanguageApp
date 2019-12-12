@@ -15,4 +15,8 @@
     <ProjectReference Include="..\AiLanML.Model\AiLanML.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MLModels\" />
+  </ItemGroup>
+
 </Project>

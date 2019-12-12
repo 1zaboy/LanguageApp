@@ -254,8 +254,8 @@ namespace AiLan
         private static string TrainDataPath = GetAbsolutePath(TrainDataRelativePath);
         private static string TestDataPath = GetAbsolutePath(TestDataRelativePath);
 
-        private static string BaseModelsRelativePath = @"../../../../MLModels";
-        private static string ModelRelativePath = $"{BaseModelsRelativePath}/IrisClassificationModel.zip";
+        private static string BaseModelsRelativePath = @"../../../MLModels";
+        private static string ModelRelativePath = $"{BaseModelsRelativePath}/WordClassificationModel.zip";
 
         private static string ModelPath = GetAbsolutePath(ModelRelativePath);
         private static void Main(string[] args)
