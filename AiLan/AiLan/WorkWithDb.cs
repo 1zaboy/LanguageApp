@@ -20,11 +20,12 @@ namespace AiLan
             ConnectionString = "Data Source = " + GetAbsolutePath("DbForApp.db3");
         }
 
-        public IDataView GetDataFromSQLite(MLContext mlContext)
+        public IDataView GetDataFromSQLite(MLContext mlContext, string sqlCommand)
         {
-            SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");            
+            SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
 
-            string sqlCommand = "SELECT Words.TextWord as 'Message', Language.Namelanguage as 'Label' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable  LIMIT 1000";/*ORDER BY RANDOM()*/
+            //string sqlCommand = "SELECT Words.TextWord as 'Message', Language.Namelanguage as 'Label' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable LIMIT 425300, 200";// 425300 OFFSET 425800";
+            //string sqlCommand = "SELECT Language.IdTable as 'Label', Language.Namelanguage as 'Message' from Language";/*ORDER BY RANDOM()*/
 
             DatabaseSource dbSource = new DatabaseSource(factory, ConnectionString, sqlCommand);
 

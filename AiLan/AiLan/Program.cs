@@ -278,9 +278,9 @@ namespace AiLan
         {
             // STEP 1: Common data loading configuration
             WorkWithDb workWithDb = new WorkWithDb();
-            var trainingDataView = workWithDb.GetDataFromSQLite(mlContext);//mlContext.Data.LoadFromTextFile<wordInput>(TrainDataPath, hasHeader: true);
+            var trainingDataView = workWithDb.GetDataFromSQLite(mlContext, "SELECT Words.TextWord as 'Message', Language.Namelanguage as 'Label' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable LIMIT 425300, 200");//mlContext.Data.LoadFromTextFile<wordInput>(TrainDataPath, hasHeader: true);
             //var trainingDataView = mlContext.Data.LoadFromTextFile<wordInput>("E:/GitHub/LanguageApp/AiLan/AiLan/SMSSpamCollection.tsv", hasHeader: true, separatorChar: '\t');            
-            //var testDataView = mlContext.Data.LoadFromTextFile<wordInput>(TestDataPath, hasHeader: true);
+            var testDataView = workWithDb.GetDataFromSQLite(mlContext, "SELECT Words.TextWord as 'Message', Language.Namelanguage as 'Label' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable LIMIT 425300, 200");//mlContext.Data.LoadFromTextFile<wordInput>(TestDataPath, hasHeader: true);
 
             var trainTestData = mlContext.Data.TrainTestSplit(trainingDataView);
 
@@ -330,8 +330,8 @@ namespace AiLan
 
             // STEP 5: Evaluate the model and show accuracy stats
             //Console.WriteLine("===== Evaluating Model's accuracy with Test data =====");
-            //var predictions = trainedModel.Transform(testDataView);
-            //var metrics = mlContext.MulticlassClassification.Evaluate(predictions, "Label", "Score");            
+            var predictions = trainedModel.Transform(testDataView);
+            var metrics = mlContext.MulticlassClassification.Evaluate(predictions, "KeyColumn", "Score");
 
             // STEP 6: Save/persist the trained model to a .ZIP file
             mlContext.Model.Save(trainedModel, trainingDataView.Schema, ModelPath);
@@ -356,6 +356,7 @@ namespace AiLan
             // We need to read KeyValues for "PredictedLabel" column.
 
             VBuffer<float> keys = default;
+            
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
 
