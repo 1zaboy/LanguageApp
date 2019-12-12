@@ -247,13 +247,6 @@ namespace AiLan
 
         private static string AppPath => Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
 
-        private static string BaseDatasetsRelativePath = @"../../../../Data";
-        private static string TrainDataRelativePath = $"{BaseDatasetsRelativePath}/iris-train.txt";
-        private static string TestDataRelativePath = $"{BaseDatasetsRelativePath}/iris-test.txt";
-
-        private static string TrainDataPath = GetAbsolutePath(TrainDataRelativePath);
-        private static string TestDataPath = GetAbsolutePath(TestDataRelativePath);
-
         private static string BaseModelsRelativePath = @"MLModels";
         private static string ModelRelativePath = $"{BaseModelsRelativePath}\\WordClassificationModel.zip";
 
@@ -265,7 +258,7 @@ namespace AiLan
             var mlContext = new MLContext(seed: 0);
             var strpath = ModelPath;
             //1.
-            BuildTrainEvaluateAndSaveModel(mlContext);
+            //BuildTrainEvaluateAndSaveModel(mlContext);
 
             //2.
             TestSomePredictions(mlContext);
@@ -298,7 +291,7 @@ namespace AiLan
                 //Create a TextFeaturizingEstimator, which transforms a text column 
                 //into a featurized vector of Single that represents normalized 
                 //counts of n-grams and char-grams.
-                .Append(mlContext.Transforms.Text.FeaturizeText("FeaturesText", new Microsoft.ML.Transforms.Text.TextFeaturizingEstimator.Options
+                .Append(mlContext.Transforms.Text.FeaturizeText("Features", new Microsoft.ML.Transforms.Text.TextFeaturizingEstimator.Options
                 {
                     WordFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options { NgramLength = 2, UseAllLengths = true },
                     CharFeatureExtractor = new Microsoft.ML.Transforms.Text.WordBagEstimator.Options { NgramLength = 3, UseAllLengths = false },
@@ -306,8 +299,7 @@ namespace AiLan
                 //copy column
                 //Create a ColumnCopyingEstimator, which copies the data from the 
                 //column specified in inputColumnName to a new column: outputColumnName.
-                .Append(mlContext.Transforms.CopyColumns(outputColumnName: "Features", inputColumnName: "FeaturesText"))
-
+                //.Append(mlContext.Transforms.CopyColumns(outputColumnName: "Features", inputColumnName: "FeaturesText"))
                 .Append(mlContext.Transforms.NormalizeLpNorm("Features", "Features"))
                 //.Append(mlContext.Transforms.Conversion.MapKeyToValue("label", "PredictedLabel"))
                 //.Append(mlContext.Transforms.Concatenate("Features", nameof(wordInput.Message)))
@@ -319,8 +311,11 @@ namespace AiLan
             // Do NOT use it (remove .AppendCacheCheckpoint()) when handling very large datasets. 
 
             // STEP 3: Set the training algorithm, then append the trainer to the pipeline  
-            var trainer = mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy(labelColumnName: "KeyColumn", featureColumnName: "Features")
-            .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName: nameof(wordInput.Label), inputColumnName: "KeyColumn"));
+            //var trainer = mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy(labelColumnName: "KeyColumn", featureColumnName: "Features")
+            //.Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName: nameof(wordInput.Label), inputColumnName: "KeyColumn"));
+
+            var trainer = mlContext.MulticlassClassification.Trainers.OneVersusAll(mlContext.BinaryClassification.Trainers.AveragedPerceptron(labelColumnName: "KeyColumn", numberOfIterations: 10, featureColumnName: "Features"), labelColumnName: "KeyColumn")
+                                      .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel", "PredictedLabel"));
 
             var trainingPipeline = dataProcessPipeline.Append(trainer);
 
@@ -355,10 +350,10 @@ namespace AiLan
             // Let's look how we can convert key value for PredictedLabel to original labels.
             // We need to read KeyValues for "PredictedLabel" column.
 
-            VBuffer<float> keys = default;
+            //VBuffer<float> keys = default;
             
-            predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
-            var labelsArray = keys.DenseValues().ToArray();
+            //predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
+            //var labelsArray = keys.DenseValues().ToArray();
 
             // Since we apply MapValueToKey estimator with default parameters, key values
             // depends on order of occurence in data file. Which is "Iris-setosa", "Iris-versicolor", "Iris-virginica"
