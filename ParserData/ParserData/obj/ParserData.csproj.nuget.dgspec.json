@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj": {}
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj": {
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj",
+        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj",
         "projectName": "ParserData",
-        "projectPath": "E:\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\LanguageApp\\ParserData\\ParserData\\obj\\",
+        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\ParserData\\ParserData\\ParserData.csproj",
+        "packagesPath": "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\ParserData\\ParserData\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Artyom Drozdovskiy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

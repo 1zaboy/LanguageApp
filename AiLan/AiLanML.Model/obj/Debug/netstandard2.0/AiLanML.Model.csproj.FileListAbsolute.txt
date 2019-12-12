@@ -16,3 +16,12 @@ E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model
 E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.AssemblyInfo.cs
 E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.dll
 E:\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.pdb
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\MLModel.zip
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\AiLanML.Model.deps.json
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\AiLanML.Model.dll
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\bin\Debug\netstandard2.0\AiLanML.Model.pdb
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.csprojAssemblyReference.cache
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.AssemblyInfoInputs.cache
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.AssemblyInfo.cs
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.dll
+C:\Users\Artyom Drozdovskiy\Documents\GitHub\LanguageApp\AiLan\AiLanML.Model\obj\Debug\netstandard2.0\AiLanML.Model.pdb

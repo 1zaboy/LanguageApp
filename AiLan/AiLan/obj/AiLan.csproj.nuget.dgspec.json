@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj": {}
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
+        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
         "projectName": "AiLanML.Model",
-        "projectPath": "E:\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\obj\\",
+        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj",
+        "packagesPath": "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Artyom Drozdovskiy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -66,20 +63,17 @@
         }
       }
     },
-    "E:\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj": {
+    "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj",
+        "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj",
         "projectName": "AiLan",
-        "projectPath": "E:\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj",
-        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\LanguageApp\\AiLan\\AiLan\\obj\\",
+        "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLan\\AiLan.csproj",
+        "packagesPath": "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLan\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Artyom Drozdovskiy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,8 +86,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
-                "projectPath": "E:\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj"
+              "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj": {
+                "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\AiLan\\AiLanML.Model\\AiLanML.Model.csproj"
               }
             }
           }
