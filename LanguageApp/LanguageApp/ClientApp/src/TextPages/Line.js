@@ -7,6 +7,7 @@ export class Line extends Component {
         this.onMouseOverEvent = this.onMouseOverEvent.bind(this);
         this.onChangeSpan = this.onChangeSpan.bind(this);
         this.LoadInfoLanguage = this.LoadInfoLanguage.bind(this);
+        this.setStateObject = this.setStateObject.bind(this);
     }
 
     onMouseOverEvent(event) {
@@ -27,6 +28,10 @@ export class Line extends Component {
         this.setState({ textVal: this.props.textValue });
     }
 
+    setStateObject(str) {
+        this.setState({ textVal: str });
+    }
+
 
     render() {
 
@@ -37,8 +42,8 @@ export class Line extends Component {
 
         var res = []                
 //        var r = this.props.textValue.replace(/\B\p{L}+\B/gu, ":");
-        if (this.props.textValue.trim() != "") {
-            this.props.textValue && this.props.textValue.replace(/\p{L}+|[,]|[.]|[?]|[:]|[']|["]/gu, (md, link, text) => {
+        if (this.state.textVal.trim() != "") {
+            this.state.textVal && this.state.textVal.replace(/\p{L}+|[,]|[.]|[?]|[:]|[']|["]/gu, (md, link, text) => {
                 res.push(md != ',' && md != '.' && md != '?' && md != ':' && md != '\'' && md != '\"' ?
                     <span onMouseOver={this.onMouseOverEvent} onInput={this.onChangeSpan}
                         data-toggle="tooltip" title={this.state.dataToggle} data-placement="top"> {md}
@@ -49,7 +54,7 @@ export class Line extends Component {
         }
         
         return (
-        <div className="user-text">{res}</div>
+        <p className="user-text">{res}</p>
         
         );
     }
