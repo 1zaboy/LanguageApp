@@ -33,21 +33,21 @@ namespace LanguageApp
             //    .AddDefaultUI(UIFramework.Bootstrap4)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false;
-                options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidIssuer = "ValidIssuer",
-                    ValidAudience = "ValidateAudience",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("IssuerSigningSecretKey")),
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ClockSkew = System.TimeSpan.Zero
-                };
-            });
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //.AddJwtBearer(options =>
+            //{
+            //    options.RequireHttpsMetadata = false;
+            //    options.SaveToken = true;
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidIssuer = "ValidIssuer",
+            //        ValidAudience = "ValidateAudience",
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("IssuerSigningSecretKey")),
+            //        ValidateLifetime = true,
+            //        ValidateIssuerSigningKey = true,
+            //        ClockSkew = System.TimeSpan.Zero
+            //    };
+            //});
             //services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>();
 
             // In production, the React files will be served from this directory
@@ -73,7 +73,7 @@ namespace LanguageApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseSpaStaticFiles();
 
             app.UseRouting();

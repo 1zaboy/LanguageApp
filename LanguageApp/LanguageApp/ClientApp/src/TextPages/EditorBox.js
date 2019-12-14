@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 export class EditorBox extends Component {
     constructor(props) {
@@ -29,7 +28,7 @@ export class EditorBox extends Component {
         //fetch(`/api/Workwords/GetLanguageWords?userid=${userid}&str=${text}`)            
         //    .then(res => this.setState({ dataToggle: res.text() }));
 
-
+        this.setState({ dataToggle: "" })
         fetch(`/api/Workwords/GetLanguageWords?userid=${userid}&str=${text}`)
             .then(response2 => response2.text())
                 .then((jsonData) => {
