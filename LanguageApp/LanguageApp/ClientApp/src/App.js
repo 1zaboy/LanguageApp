@@ -6,7 +6,8 @@ import { FetchData } from './components/FetchData';
 import { Login } from './Accaunt/Login';
 import { Registration } from './Accaunt/Registration';
 import { TextPage } from './TextPages/MainPageForText';
-
+import AuthorizeRoute from './api-authorization/AuthorizeRoute';
+import PrivateRoute from './Accaunt/PrivateRoute';
 import './custom.css'
 
 export default class App extends Component {
@@ -14,12 +15,11 @@ export default class App extends Component {
 
     render() {
         return (
-            <Layout>
-                <Route exact path='/' component={Home} />
-                <Route path='/Login' component={Login} />
+            <Layout>                
+                <AuthorizeRoute path='/Login' component={Login} />
                 <Route path='/Registration' component={Registration} />
                 <Route path='/fetch-data' component={FetchData} />
-                <Route path='/TextPages' component={TextPage} />
+                <PrivateRoute path='/TextPages' component={TextPage} />
             </Layout>
         );
     }

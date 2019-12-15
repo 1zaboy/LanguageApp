@@ -47,5 +47,40 @@ namespace LanguageApp.WorkWithDb
                 return null;
             }
         }
+
+        public bool addReqData(string userid, string wordid)
+        {
+            try
+            {
+                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
+                {
+                    connection.ConnectionString = "Data Source = " + ConnectionString;
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand(connection))
+                    {
+                        command.CommandText = @"INSERT INTO Request (                        
+                        IdUser,
+                        IdWord,
+                        DTRequest
+                    )
+                    VALUES (                        
+                        '"+userid+@"',
+                        '" + wordid + @"',
+                        datetime('now')
+                    );";
+                        command.CommandType = CommandType.Text;
+                        var reader = command.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return false;
+            }
+        }
     }
 }

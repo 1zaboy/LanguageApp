@@ -3969,19 +3969,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alex\\.nuget\\packages\\": {}
+    "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\source\\repos\\test\\testML.ConsoleApp\\testML.ConsoleApp.csproj",
+      "projectUniqueName": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\test\\testML.ConsoleApp\\testML.ConsoleApp.csproj",
       "projectName": "testML.ConsoleApp",
-      "projectPath": "C:\\Users\\Alex\\source\\repos\\test\\testML.ConsoleApp\\testML.ConsoleApp.csproj",
-      "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\source\\repos\\test\\testML.ConsoleApp\\obj\\",
+      "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\test\\testML.ConsoleApp\\testML.ConsoleApp.csproj",
+      "packagesPath": "C:\\Users\\Artyom Drozdovskiy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\test\\testML.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Artyom Drozdovskiy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3994,8 +3994,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Alex\\source\\repos\\test\\testML.Model\\testML.Model.csproj": {
-              "projectPath": "C:\\Users\\Alex\\source\\repos\\test\\testML.Model\\testML.Model.csproj"
+            "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\test\\testML.Model\\testML.Model.csproj": {
+              "projectPath": "C:\\Users\\Artyom Drozdovskiy\\Documents\\GitHub\\LanguageApp\\test\\testML.Model\\testML.Model.csproj"
             }
           }
         }
@@ -4030,7 +4030,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

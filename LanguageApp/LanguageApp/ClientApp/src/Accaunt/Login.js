@@ -4,15 +4,16 @@ import { render } from "react-dom";
 import { $ } from "jquery";
 import { Router } from 'react-router-dom';
 import { browserHistory } from 'react-router'
+import { isLog } from "./auth";
 
 export class Login extends Component {
     static displayName = Login.name;
 
     constructor(props) {
         super(props);
-        this.state = { currentCount: 0, ValueName: '', ValuePassword: '', ResponseText: ''};
+        this.state = { currentCount: 0, ValueName: '', ValuePassword: '', ResponseText: '' };
         this.incrementCounter = this.incrementCounter.bind(this);
-        
+
         this.NameChange = this.NameChange.bind(this);
         this.PasswordChange = this.PasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +24,7 @@ export class Login extends Component {
         this.setState({
             currentCount: this.state.currentCount + 1
         });
-    }   
+    }
 
     NameChange(event) {
         this.setState({ ValueName: event.target.value });
@@ -33,28 +34,31 @@ export class Login extends Component {
         this.setState({ ValuePassword: event.target.value });
     }
 
-    handleSubmit(event) {              
+    handleSubmit(event) {
         this.loadData();
         event.preventDefault();
     }
 
     render() {
-        return (            
-            <form onSubmit={this.handleSubmit}>
-                <div>
-                <label>
-                    Name:
+        return (
+            <div>
+                <h1>Login</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <label>
+                            Name:
                     <input type="text" value={this.state.ValueName} onChange={this.NameChange} />
-                    </label>
-                </div>
-                <div>
-                <label>
-                    Password:
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Password:
                     <input type="text" value={this.state.ValuePassword} onChange={this.PasswordChange} />
-                    </label>                
-                </div>
-                <input type="submit" value="Send" />
-            </form>
+                        </label>
+                    </div>
+                    <input type="submit" value="Send" />
+                </form>
+            </div>
         );
     }
 
@@ -69,8 +73,12 @@ export class Login extends Component {
             this.setState({ ResponseText: data });
             if (data == false) {
                 alert("Error enter name or/and password");
-            } else {                
+            } else {
                 //browserHistory.push("/TextPages");
+                window.isLog = true;
+                //window.location.href = "/TextPages";
+                //<PrivateRoute path='/TextPages' component={TextPage} />
+                alert("You login");
             }
         }.bind(this);
         xhr.send();

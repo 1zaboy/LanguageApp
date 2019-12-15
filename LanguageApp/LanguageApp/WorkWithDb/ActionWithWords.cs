@@ -15,13 +15,9 @@ namespace LanguageApp.WorkWithDb
         {
             DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
         }
-        public string getLanguageWord(string textword)
-        {
-            if (IsWordInDb(textword))
-            {
-                return _getLanWord(textword);
-            }
-            return "";
+        public List<string> GetLanguageWord(string textword)
+        {            
+            return _getLanWord(textword);            
         }
         private bool IsWordInDb(string textword)
         {
@@ -58,11 +54,11 @@ namespace LanguageApp.WorkWithDb
             }
         }
 
-        private string _getLanWord(string textword)
+        private List<string> _getLanWord(string textword)
         {
             try
             {
-                List<Users> LUsers_return = new List<Users>();
+                List<string> strItem = new List<string>();
                 SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
@@ -71,16 +67,14 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"select Language.Namelanguage as 'Namelanguage' Words WHERE TextWord = '" + textword + "' INNER JOIN Language ON Words.IdLanguage = Language.IdTable";
+                        command.CommandText = @"select Language.Namelanguage as 'Namelanguage' from Words INNER JOIN Language ON Words.IdLanguage = Language.IdTable WHERE TextWord = '" + textword + "'";
                         command.CommandType = CommandType.Text;
                         var reader = command.ExecuteReader();
-                        string strItem = "";
+                        
                         while (reader.Read())
-                        {
-                            strItem = (string)reader["Namelanguage"];
-                        }
-                        if (strItem == "")
-                            throw new Exception("Error");
+                        {                            
+                            strItem.Add((string)reader["Namelanguage"]);
+                        }                        
                         return strItem;
                     }
                 }
@@ -89,7 +83,7 @@ namespace LanguageApp.WorkWithDb
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
-                return ex.Message.ToString();
+                return new List<string>();
             }
         }
         
