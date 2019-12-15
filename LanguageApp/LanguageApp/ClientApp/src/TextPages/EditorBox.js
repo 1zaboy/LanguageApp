@@ -3,7 +3,7 @@
 export class EditorBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '', textVal: this.props.textValue, dataToggle: "", lan1: 0, lan2: 0, len3: 0, lan4: 0, lan5: 0 };
+        this.state = { wordw: "", table: [], value: '', textVal: this.props.textValue, dataToggle: ""};
         this.onChangeSpan = this.onChangeSpan.bind(this);
         this.ChangeDivTextEditor = this.ChangeDivTextEditor.bind(this);        
         this.handleChange = this.handleChange.bind(this);
@@ -21,6 +21,7 @@ export class EditorBox extends Component {
         this.setState({ value: event.target.value });
     }
     onMouseOverEvent(event) {
+        this.setState({ dataToggle: "" });
         this.loadData(event.target.innerText);
     }    
     loadData(text) {
@@ -28,27 +29,47 @@ export class EditorBox extends Component {
         //fetch(`/api/Workwords/GetLanguageWords?userid=${userid}&str=${text}`)            
         //    .then(res => this.setState({ dataToggle: res.text() }));
 
-        this.setState({ dataToggle: "" })
+        
         fetch(`/api/Workwords/GetLanguageWords?userid=${userid}&str=${text}`)
             .then(response2 => response2.text())
                 .then((jsonData) => {
                     // jsonData is parsed json object received from url
-                    this.setState({ dataToggle: jsonData})
+
+
+                    var rows = jsonData.split("|");
+                    var LRcolLan = [];
+                    var LRcolProc = [];
+                    rows.map((item) => {
+                        LRcolLan.push(item.split(":")[0])
+                        LRcolProc.push(item.split(":")[1])
+                    });
+
+                    var t = <table>
+                        <tr>
+                            <th>{LRcolLan[0]}</th>
+                            <th>{LRcolLan[1]}</th>
+                            <th>{LRcolLan[2]}</th>
+                            <th>{LRcolLan[3]}</th>
+                            <th>{LRcolLan[4]}</th>
+                        </tr>
+                        <tr>
+                            <th>{LRcolProc[0]}</th>
+                            <th>{LRcolProc[1]}</th>
+                            <th>{LRcolProc[2]}</th>
+                            <th>{LRcolProc[3]}</th>
+                            <th>{LRcolProc[4]}</th>
+                        </tr>
+                    </table>
+
+
+                    this.setState({ wordw: text, table: t})
                     console.log(jsonData)
                 })
                 .catch((error) => {
                     // handle your errors here
                     console.error(error)
                 })
-
-
-        //var xhr = new XMLHttpRequest();
-        //xhr.open("get", this.props.apiUrl, true);
-        //xhr.onload = function () {
-        //    var data = JSON.parse(xhr.responseText);
-        //    this.setState({ phones: data });
-        //}.bind(this);
-        //xhr.send();
+      
     }
     render() {
 
@@ -59,6 +80,7 @@ export class EditorBox extends Component {
                 res.push(md != ',' && md != '.' && md != '?' && md != ':' && md != '\'' && md != '\"' ?
                     <span onMouseOver={this.onMouseOverEvent} onInput={this.onChangeSpan}
                         data-toggle="tooltip" title={this.state.dataToggle} data-placement="top"> {md}
+                        <span class="tooltiptext">Tooltip text</span>
                     </span> : md)
             })
         } else {
@@ -75,6 +97,8 @@ export class EditorBox extends Component {
 
                 <input type="text" name="browser" value={this.state.value} onChange={this.handleChange} />
 
+                <h2>{this.state.wordw}</h2>
+                <div>{this.state.table}</div>
             </div>
         );
 

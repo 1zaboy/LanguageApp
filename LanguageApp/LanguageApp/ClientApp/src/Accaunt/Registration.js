@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 
 export class Registration extends Component {
-    static displayName = Registration.name; 
+    static displayName = Registration.name;
 
     constructor(props) {
         super(props);
@@ -34,21 +34,24 @@ export class Registration extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div>
-                    <label>
-                        Name:
+            <div>
+                <h1>Registration</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <label>
+                            Name:
                     <input type="text" value={this.state.ValueName} onChange={this.NameChange} />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Password:
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            Password:
                     <input type="text" value={this.state.ValuePassword} onChange={this.PasswordChange} />
-                    </label>
-                </div>
-                <input type="submit" value="Send" />
-            </form>
+                        </label>
+                    </div>
+                    <input type="submit" value="Send" />
+                </form>
+            </div>
         );
     }
 
@@ -60,7 +63,7 @@ export class Registration extends Component {
         xhr.open("get", "/api/Login/AddUser?" + 'name=' + this.state.ValueName + '&password=' + this.state.ValuePassword, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
-            this.setState({ ResponseText: data });            
+            this.setState({ ResponseText: data });
         }.bind(this);
         xhr.send();
     }
