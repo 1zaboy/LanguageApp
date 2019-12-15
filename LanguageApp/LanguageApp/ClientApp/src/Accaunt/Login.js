@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TextPage } from '../TextPages/MainPageForText';
+import { EditorBox } from '../TextPages/EditorBox';
 import { render } from "react-dom";
 import { $ } from "jquery";
 import { Router } from 'react-router-dom';
@@ -11,13 +12,15 @@ export class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { currentCount: 0, ValueName: '', ValuePassword: '', ResponseText: '' };
+        this.state = { userid: "", currentCount: 0, ValueName: '', ValuePassword: '', ValuePassword2: '', ValuePassword2: '', ResponseText: '', dopPoly: false, isLog: false };
         this.incrementCounter = this.incrementCounter.bind(this);
 
         this.NameChange = this.NameChange.bind(this);
         this.PasswordChange = this.PasswordChange.bind(this);
+        this.PasswordChange2 = this.PasswordChange2.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.loadData = this.loadData.bind(this);
+        this.loadData2 = this.loadData2.bind(this);
     }
 
     incrementCounter() {
@@ -34,14 +37,32 @@ export class Login extends Component {
         this.setState({ ValuePassword: event.target.value });
     }
 
+    PasswordChange2(event) {
+        this.setState({ ValuePassword2: event.target.value });
+    }
+
     handleSubmit(event) {
-        this.loadData();
+        if (!this.state.dopPoly) {
+            this.loadData();
+        }
+        else {
+            this.loadData2();
+        }
+        
         event.preventDefault();
     }
 
     render() {
-        return (
-            <div>
+        var t = "";
+        if (this.state.dopPoly) {
+            t = <label>
+                Password:
+                <input type="text" value={this.state.ValuePassword2} onChange={this.PasswordChange2} />
+            </label>
+        }
+        var res = "";
+        if (!this.state.isLog) {
+            res = <div>
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div>
@@ -56,9 +77,19 @@ export class Login extends Component {
                     <input type="text" value={this.state.ValuePassword} onChange={this.PasswordChange} />
                         </label>
                     </div>
+                    <div>{t}</div>
                     <input type="submit" value="Send" />
                 </form>
             </div>
+        }
+        else {
+            res = <TextPage userid={this.state.userid}/>
+        }
+
+        return (    
+        <div>
+                {res}
+                </div>
         );
     }
 
@@ -70,17 +101,35 @@ export class Login extends Component {
         xhr.open("get", "/api/Login/IsLoginCompleted?" + 'name=' + this.state.ValueName + '&password=' + this.state.ValuePassword, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
-            this.setState({ ResponseText: data });
-            if (data == false) {
+            //this.setState({ ResponseText: data });
+            if (data == "-1") {
                 alert("Error enter name or/and password");
+                this.setState({ dopPoly: true });
             } else {
                 //browserHistory.push("/TextPages");
-                window.isLog = true;
-                //window.location.href = "/TextPages";
-                //<PrivateRoute path='/TextPages' component={TextPage} />
-                alert("You login");
+                this.setState({ isLog: true, dopPoly: false, userid: data });                
             }
         }.bind(this);
         xhr.send();
+    }
+
+    loadData2() {
+        var xhr = new XMLHttpRequest();
+        if (this.state.ValuePassword == this.state.ValuePassword2) {
+            xhr.open("get", "/api/Login/AddUser?" + 'name=' + this.state.ValueName + '&password=' + this.state.ValuePassword, true);
+            xhr.onload = function () {
+                var data = JSON.parse(xhr.responseText);
+                //this.setState({ ResponseText: data });
+                if (data == "-1") {
+                    alert("Error");                    
+                } else {
+                    this.setState({ isLog: true, dopPoly: false, userid: data });                     
+                }
+            }.bind(this);
+            xhr.send();
+        }
+        else {
+            alert("Error pass1 != pass2");
+        }
     }
 }

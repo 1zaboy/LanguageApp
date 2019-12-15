@@ -29,12 +29,21 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"SELECT Users.UserName as 'UserName', Count(*) as 'CountRequest', User.DateLogin as 'DateLogin', AVG(Requests.DTRequast) as 'avgDTRequast' FROM Requests INNER JOIN Users ON Requests.UserId = Users.IdTable";
+                        command.CommandText = @"SELECT 
+                            Users.UserName, 
+                            count(*) as 'countReq',
+                            max(Users.DTLogin) as 'LastLog',
+                            (julianday( max(DTRequest))- julianday(min(DTRequest)))/count(*) as 'dtime'
+                            FROM Request
+                            INNER JOIN Users ON Request.IdUser = Users.IdTable
+                            GROUP by IdUser
+                            order by count(*) DESC LIMIT 10";
                         command.CommandType = CommandType.Text;
                         var reader = command.ExecuteReader();
                         while (reader.Read())
                         {
-                            tableModels.Add(new TableModel() { NameUser = (string)reader["UserName"], LastLogin = (DateTime)reader["DateLogin"], CountRequests = (int)reader["CountRequest"], AvgTimeRequests = (DateTime)reader["avgDTRequast"] });
+                            var avgReq = new TimeSpan((long)((double)reader["dtime"] / new TimeSpan(1).TotalDays));
+                            tableModels.Add(new TableModel() { NameUser = reader["UserName"].ToString(), CountRequests = (int)(long)reader["countReq"], LastLogin = DateTime.Parse(reader["LastLog"].ToString()), AvgTimeRequests = avgReq });
                         }
 
                     }

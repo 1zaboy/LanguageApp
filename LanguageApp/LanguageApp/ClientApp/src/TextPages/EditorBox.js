@@ -3,9 +3,9 @@
 export class EditorBox extends Component {
     constructor(props) {
         super(props);
-        this.state = { wordw: "", table: [], value: '', textVal: this.props.textValue, dataToggle: ""};
+        this.state = { userid: props.userid, wordw: "", table: [], value: '', textVal: this.props.textValue, dataToggle: "" };
         this.onChangeSpan = this.onChangeSpan.bind(this);
-        this.ChangeDivTextEditor = this.ChangeDivTextEditor.bind(this);        
+        this.ChangeDivTextEditor = this.ChangeDivTextEditor.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.onMouseOverEvent = this.onMouseOverEvent.bind(this);
         this.loadData = this.loadData.bind(this);
@@ -22,54 +22,59 @@ export class EditorBox extends Component {
     }
     onMouseOverEvent(event) {
         this.setState({ dataToggle: "" });
-        this.loadData(event.target.innerText);
-    }    
+        this.loadData(event.target.innerText);        
+    }
     loadData(text) {
-        const userid = 1;        
+        const userid = this.state.userid;
         //fetch(`/api/Workwords/GetLanguageWords?userid=${userid}&str=${text}`)            
         //    .then(res => this.setState({ dataToggle: res.text() }));
 
-        
+
         fetch(`/api/Workwords/GetLanguageWords?userid=${userid}&str=${text}`)
             .then(response2 => response2.text())
-                .then((jsonData) => {
-                    // jsonData is parsed json object received from url
+            .then((jsonData) => {
+                // jsonData is parsed json object received from url
+                var rows = jsonData.split("|");
+                var LRcolLan = [];
+                var LRcolProc = [];
+                rows.map((item) => {
+                    LRcolLan.push(item.split(":")[0])
+                    LRcolProc.push(item.split(":")[1])
+                });
+
+                var t = <table>
+                    <tr>
+                        <th>{LRcolLan[0]}</th>
+                        <th>{LRcolProc[0]}</th>
+                    </tr>
+                    <tr>
+                        <th>{LRcolLan[1]}</th>
+                        <th>{LRcolProc[1]}</th>
+                    </tr>
+                    <tr>
+                        <th>{LRcolLan[2]}</th>
+                        <th>{LRcolProc[2]}</th>
+                    </tr>
+                    <tr>
+                        <th>{LRcolLan[3]}</th>
+                        <th>{LRcolProc[3]}</th>
+                    </tr>
+                    <tr>
+                        <th>{LRcolLan[4]}</th>
+                        <th>{LRcolProc[4]}</th>
+                    </tr>                    
+                </table >
 
 
-                    var rows = jsonData.split("|");
-                    var LRcolLan = [];
-                    var LRcolProc = [];
-                    rows.map((item) => {
-                        LRcolLan.push(item.split(":")[0])
-                        LRcolProc.push(item.split(":")[1])
-                    });
+                this.setState({ wordw: text, table: t })
+                console.log(jsonData)
+            })
+            .catch((error) => {
+                // handle your errors here
+                this.setState({ wordw: "", table: "" })
+                console.error(error)
+            })
 
-                    var t = <table>
-                        <tr>
-                            <th>{LRcolLan[0]}</th>
-                            <th>{LRcolLan[1]}</th>
-                            <th>{LRcolLan[2]}</th>
-                            <th>{LRcolLan[3]}</th>
-                            <th>{LRcolLan[4]}</th>
-                        </tr>
-                        <tr>
-                            <th>{LRcolProc[0]}</th>
-                            <th>{LRcolProc[1]}</th>
-                            <th>{LRcolProc[2]}</th>
-                            <th>{LRcolProc[3]}</th>
-                            <th>{LRcolProc[4]}</th>
-                        </tr>
-                    </table>
-
-
-                    this.setState({ wordw: text, table: t})
-                    console.log(jsonData)
-                })
-                .catch((error) => {
-                    // handle your errors here
-                    console.error(error)
-                })
-      
     }
     render() {
 
@@ -93,7 +98,7 @@ export class EditorBox extends Component {
                 <div>
                     {res}
                 </div>
-                
+
 
                 <input type="text" name="browser" value={this.state.value} onChange={this.handleChange} />
 

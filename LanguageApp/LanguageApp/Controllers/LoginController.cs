@@ -23,22 +23,25 @@ namespace LanguageApp.Controllers
         MainWorkWithDb mainWorkWithDb = new MainWorkWithDb();
 
         [Route("IsLoginCompleted")]
-        public bool IsLoginCompleted(string name, string password)
+        public string IsLoginCompleted(string name, string password)
         {            
-            return mainWorkWithDb.LoginUser(name, password);            
+            mainWorkWithDb.LoginUser(name, password);
+            var r = mainWorkWithDb.getUserIdByName(name, password);            
+            return r.ToString();
         }
 
         [Route("AddUser")]
-        public bool AddUser(string name, string password)
+        public string AddUser(string name, string password)
         {
             try
             {
-                mainWorkWithDb.AddUser(name, password);
-                return true;
+                var j = mainWorkWithDb.AddUser(name, password);
+                var r = mainWorkWithDb.getUserIdByName(name, password);                
+                return r.ToString();
             }
             catch(Exception ex)
             {
-                return false;
+                return false.ToString();
             }
         }
 

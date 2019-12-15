@@ -10,7 +10,7 @@ export class TextPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { textValue: '', listChild: HTMLCollection, ItemsReactElement: [], value: '' };
+        this.state = { userid: props.userid, textValue: '', listChild: HTMLCollection, ItemsReactElement: [], value: '' };
         this.ChangeDivTextEditor = this.ChangeDivTextEditor.bind(this);        
     }
 
@@ -22,7 +22,7 @@ export class TextPage extends Component {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-3">                        
-                        <EditorBox/>                       
+                        <EditorBox userid={this.state.userid}/>                       
                         
                     </div>
                     <div class="col-9">

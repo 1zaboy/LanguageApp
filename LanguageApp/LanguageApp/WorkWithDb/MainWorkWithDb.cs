@@ -57,6 +57,37 @@ namespace LanguageApp.WorkWithDb
 
         }
 
+        public string getUserIdByName(string name, string password)
+        {
+            try
+            {
+                string t = "-1";
+                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
+                {
+                    connection.ConnectionString = "Data Source = " + ConnectionString;
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand(connection))
+                    {
+                        command.CommandText = @"SELECT IdTable FROM Users where Users.UserName = '" + name+ "' and Users.Password = "+password+";";
+                        command.CommandType = CommandType.Text;
+                        var reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            t = reader["IdTable"].ToString();                            
+                        }
+                    }
+                }
+                return t;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                return "-1";
+            }
+        }
+
         private bool UserLoginDTUpdate(string name, string password)
         {
             try
@@ -117,12 +148,12 @@ namespace LanguageApp.WorkWithDb
                 return false;
             }
         }
-        public void AddUser(string name, string password)
+        public bool AddUser(string name, string password)
         {
             try
             {
                 if (IsUserAvailability(name, password))
-                    return;
+                    return false;
 
                 SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
@@ -132,15 +163,17 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"INSERT INTO Users(UserName, Password, DateLogin) VALUES ('" + name + "','" + password + "','"+DateTime.Now.ToString()+"');";
+                        command.CommandText = @"INSERT INTO Users(UserName, Password, DTLogin) VALUES ('" + name + "','" + password + "',DateTime('now'));";
                         command.CommandType = CommandType.Text;
                         var reader = command.ExecuteNonQuery();
                     }
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message.ToString());
+                return false;
             }
         }
 

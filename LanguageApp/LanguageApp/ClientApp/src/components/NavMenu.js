@@ -30,14 +30,12 @@ export class NavMenu extends Component {
                         <NavbarBrand tag={Link} to="/">LanguageApp</NavbarBrand>
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
                         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-                            <ul className="navbar-nav flex-grow">                                
+                            <ul className="navbar-nav flex-grow">
                                 <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/TextPages">Enter text</NavLink>
-                                </NavItem>                               
-                                <LoginMenu>
-                                </LoginMenu>
+                                    <NavLink tag={Link} className="text-dark" to="/text">Enter text</NavLink>
+                                </NavItem>
                             </ul>
-                        </Collapse>
+                        </Collapse>                        
                     </Container>
                 </Navbar>
             </header>

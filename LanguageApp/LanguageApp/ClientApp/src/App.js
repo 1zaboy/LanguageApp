@@ -16,10 +16,9 @@ export default class App extends Component {
     render() {
         return (
             <Layout>                
-                <AuthorizeRoute path='/Login' component={Login} />
-                <Route path='/Registration' component={Registration} />
-                <Route path='/fetch-data' component={FetchData} />
-                <PrivateRoute path='/TextPages' component={TextPage} />
+                <Route path='/Login' component={Login} />                
+                <PrivateRoute path='/' component={TextPage} />
+                <PrivateRoute path='/text' component={TextPage} />
             </Layout>
         );
     }

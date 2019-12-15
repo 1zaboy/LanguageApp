@@ -56,8 +56,26 @@ namespace LanguageApp.Controllers
         public string GetLanguageWords(int userid, string str)
         {
             str = str.ToLower();
-            var LLan = AWW.GetLanguageWord(str);
+            str = str.Trim();
             string fullStrAllLang = "";
+            if (str.Length < 4)
+                return "";
+
+            AWW.AddRequeststWord(userid.ToString(), str);
+
+            var itemsResult = AWW.GetSteteRequastsDB(str);
+            if(itemsResult.Count == 5)
+            {
+                foreach(var item in itemsResult)
+                {
+                    fullStrAllLang += item.Lan + ": " + item.Proc + "%|";                    
+                }
+                return fullStrAllLang;
+            }
+            str = str.ToLower();
+            var LLan = AWW.GetLanguageWord(str);
+            Dictionary<int, float> keyValuePairs = new Dictionary<int, float>();
+
             if (LLan.Count != 0)
             {
                 var proc = 100 / LLan.Count;
@@ -75,13 +93,14 @@ namespace LanguageApp.Controllers
                     if(IsLanName[i])
                     {
                         fullStrAllLang += LanNameBD[i] + ": " + proc + "%|";
+                        keyValuePairs.Add(AWW.getIdByNameLan(LanNameBD[i]), proc);
                     }
                     else
                     {
                         fullStrAllLang += LanNameBD[i] + ": 0%|";
+                        keyValuePairs.Add(AWW.getIdByNameLan(LanNameBD[i]), 0);
                     }
                 }
-
             }
             else
             {
@@ -91,9 +110,11 @@ namespace LanguageApp.Controllers
                 
                 for(int i = 0; i < modelOutput.Score.Length; i++)
                 {
-                    fullStrAllLang += LanName[i] + ": " + modelOutput.Score[i] * 100 + "%|";
+                    fullStrAllLang += LanName[i] + ": " + Math.Round(modelOutput.Score[i] * 100, 1) + "%|";
+                    keyValuePairs.Add(AWW.getIdByNameLan(LanName[i]), modelOutput.Score[i] * 100);
                 }
             }
+            AWW.AddResultWord(userid.ToString(), str, keyValuePairs);
             return fullStrAllLang;
         }
         
