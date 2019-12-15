@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
+
+
 import { Login } from './Accaunt/Login';
-import { Registration } from './Accaunt/Registration';
+
 import { TextPage } from './TextPages/MainPageForText';
-import AuthorizeRoute from './api-authorization/AuthorizeRoute';
+
 import PrivateRoute from './Accaunt/PrivateRoute';
 import './custom.css'
 
