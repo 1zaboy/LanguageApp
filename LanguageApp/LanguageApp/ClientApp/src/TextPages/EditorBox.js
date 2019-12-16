@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import XRegExp from 'xregexp';
 
 export class EditorBox extends Component {
     constructor(props) {
@@ -80,14 +81,26 @@ export class EditorBox extends Component {
 
         var res = []
         //        var r = this.props.textValue.replace(/\B\p{L}+\B/gu, ":");
-        if (this.state.value.trim() !== "") {
-            this.state.value && this.state.value.replace(/\p{L}+|[,]|[.]|[?]|[:]|[']|["]/gu, (md, link, text) => {
+        if (this.state.value.trim() !== "") {       
+            var repeatedWords = XRegExp('\\b(?<word>[a-z]+)\\s+\\k<word>\\b', 'gi');
+
+            var strR = XRegExp('\\p{L}+|[,]|[.]|[?]|[:]','gu');
+            this.state.value && XRegExp.replace(this.state.value, strR, (md) => {
+
                 res.push(md !== ',' && md !== '.' && md !== '?' && md !== ':' && md !== '\'' && md !== '"' ?
                     <span onMouseOver={this.onMouseOverEvent} onInput={this.onChangeSpan}
                         data-toggle="tooltip" title={this.state.dataToggle} data-placement="top"> {md}
                         <span class="tooltiptext">Tooltip text</span>
                     </span> : md)
-            })
+
+            });
+            //this.state.value && this.state.value.replace(strR, (md, link, text) => {
+            //    res.push(md !== ',' && md !== '.' && md !== '?' && md !== ':' && md !== '\'' && md !== '"' ?
+            //        <span onMouseOver={this.onMouseOverEvent} onInput={this.onChangeSpan}
+            //            data-toggle="tooltip" title={this.state.dataToggle} data-placement="top"> {md}
+            //            <span class="tooltiptext">Tooltip text</span>
+            //        </span> : md)
+            //})
         } else {
             res.push(<br />);
         }
@@ -109,8 +122,3 @@ export class EditorBox extends Component {
 
     }
 }
-
-//<div contenteditable="true" className="user-text" class="text-editor-box" id="texteditor1" onInput={this.ChangeDivTextEditor}>
-//    <p>text</p>
-//    <p>{t}</p>
-//</div>

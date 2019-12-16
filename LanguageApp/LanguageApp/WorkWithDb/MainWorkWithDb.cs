@@ -39,7 +39,7 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"SELECT IdTable FROM Users where Users.UserName = '" + name+ "' and Users.Password = "+password+";";
+                        command.CommandText = @"SELECT IdTable FROM Users where Users.UserName = '" + name+ "' and Users.Password = '"+password+"';";
                         command.CommandType = CommandType.Text;
                         var reader = command.ExecuteReader();
                         while (reader.Read())
