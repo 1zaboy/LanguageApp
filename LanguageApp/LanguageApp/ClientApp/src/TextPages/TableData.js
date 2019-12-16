@@ -26,11 +26,12 @@ export class TableData extends Component {
         var arr = [];
         if (this.state.JsonStr !== '' && this.state.JsonStr != null) {
             this.state.JsonStr.map((item) => {
+                var s = item.LastLogin.replace("T", " ");
                 arr.push(<tr>
                     <td>{item.NameUser}</td>
                     <td>{item.CountRequests}</td>
-                    <td>{item.LastLogin}</td>
-                    <td>{item.AvgTimeRequests}</td>
+                    <td>{s}</td>
+                    <td>{item.AvgTimeRequests.slice(0, 12)}</td>
                 </tr>);
             });
         }

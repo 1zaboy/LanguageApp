@@ -49,31 +49,36 @@ export class Login extends Component {
     render() {
         var t = "";
         if (this.state.dopPoly) {
-            t = <label>
-                Password:
-                <input type="password" value={this.state.ValuePassword2} onChange={this.PasswordChange2} />
-            </label>
+            t = <div class="form-group"> <label for="exampleInputPassword1">
+                Password:</label>
+                <input type="password" id="exampleInputPassword2" class="form-control" value={this.state.ValuePassword2} onChange={this.PasswordChange2} />
+            </div>
         }
         var res = "";
         if (!this.state.isLog) {
             res = <div>
+                <div class="row">
+                    <div class="col-3">
                 <h1>Login</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label>
-                            Name:
-                    <input type="text" value={this.state.ValueName} onChange={this.NameChange} />
-                        </label>
+                <form  onSubmit={this.handleSubmit}>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">
+                            Name:</label>
+                        <input type="text" id="exampleInputEmail1" class="form-control" value={this.state.ValueName} onChange={this.NameChange} />
+                        
                     </div>
-                    <div>
-                        <label>
-                            Password:
-                    <input type="password" value={this.state.ValuePassword} onChange={this.PasswordChange} />
-                        </label>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">
+                            Password:</label>
+                        <input type="password" class="form-control" value={this.state.ValuePassword} id="exampleInputPassword1" onChange={this.PasswordChange} />
+                        
                     </div>
                     <div>{t}</div>
-                    <input type="submit" value="Send" />
-                </form>
+                            <input type="submit" class="btn btn-primary" value="Send" />
+                        </form>
+                    </div>
+                    <div class="col-9"></div>
+                    </div>
             </div>
         }
         else {
