@@ -51,7 +51,7 @@ export class Login extends Component {
         if (this.state.dopPoly) {
             t = <label>
                 Password:
-                <input type="text" value={this.state.ValuePassword2} onChange={this.PasswordChange2} />
+                <input type="password" value={this.state.ValuePassword2} onChange={this.PasswordChange2} />
             </label>
         }
         var res = "";
@@ -68,7 +68,7 @@ export class Login extends Component {
                     <div>
                         <label>
                             Password:
-                    <input type="text" value={this.state.ValuePassword} onChange={this.PasswordChange} />
+                    <input type="password" value={this.state.ValuePassword} onChange={this.PasswordChange} />
                         </label>
                     </div>
                     <div>{t}</div>
