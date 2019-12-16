@@ -70,7 +70,7 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"UPDATE Users SET Users.DateLogin = datetime('now') WHERE Users.UserName = '" + name + "' AND Users.Password = '" + password + "'";
+                        command.CommandText = @"UPDATE Users SET DTLogin = datetime('now') WHERE UserName = '" + name + "' AND Password = '" + password + "'";
                         command.CommandType = CommandType.Text;
                         var reader = 1;// command.ExecuteNonQuery();
                         if (reader != 1)

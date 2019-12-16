@@ -59,7 +59,7 @@ namespace LanguageApp.WorkWithDb
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
                         command.CommandText = @"UPDATE Language SET Namelanguage = '" + NewNameLan + "' WHERE Language.Namelanguage = '" + NameLan + "'";
-                        command.CommandType = CommandType.Text;//https://localhost:44327/api/LanSetting/UPDATELan?NameLan=English&NewNameLan=En
+                        command.CommandType = CommandType.Text;
                         var reader = command.ExecuteNonQuery();
                         if (reader == 1)
                             return true;

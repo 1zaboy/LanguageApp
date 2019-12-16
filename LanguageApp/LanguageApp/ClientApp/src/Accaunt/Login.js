@@ -96,7 +96,7 @@ export class Login extends Component {
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
             //this.setState({ ResponseText: data });
-            if (data === "-1") {
+            if (data === -1) {
                 alert("Error enter name or/and password");
                 this.setState({ dopPoly: true });
             } else {
@@ -113,7 +113,7 @@ export class Login extends Component {
             xhr.open("get", "/api/Login/AddUser?name=" + this.state.ValueName + "&password=" + this.state.ValuePassword, true);
             xhr.onload = function () {
                 var data = JSON.parse(xhr.responseText);                
-                if (data === "-1") {
+                if (data === -1) {
                     alert("Error");                    
                 } else {
                     this.setState({ isLog: true, dopPoly: false, userid: data });                     
