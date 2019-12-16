@@ -24,7 +24,7 @@ export class TableData extends Component {
 
     render() {
         var arr = [];
-        if (this.state.JsonStr != '' && this.state.JsonStr != null) {
+        if (this.state.JsonStr !== '' && this.state.JsonStr != null) {
             this.state.JsonStr.map((item) => {
                 arr.push(<tr>
                     <td>{item.NameUser}</td>

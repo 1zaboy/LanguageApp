@@ -14,21 +14,12 @@ namespace LanguageApp.Controllers
     [Route("api/[controller]")]
     public class WorkwordsController : Controller
     {
-
-
-        List<string> LanChar = new List<string>();
         string[] LanName = new string[5];
         string[] LanNameBD = new string[5];
         bool[] IsLanName = new bool[5] { false, false, false, false, false };
 
         public WorkwordsController()
         {
-            LanChar.Add("abcdefghijklmnopqrstuvwxyz");
-            LanChar.Add("абвгдеёжзийклмнопрстуфхцчшщъыьэюя");
-            LanChar.Add("bkscltdmuenvfñwgoxhpyiqz");
-            LanChar.Add("abcdefghijklmnopqrstuvwxyz");
-            LanChar.Add("абвгдежзийклмнопрстуфхцчшщъьюя");
-
             LanName[0] = "Russian";
             LanName[3] = "English";
             LanName[1] = "Portuguese";
@@ -41,14 +32,7 @@ namespace LanguageApp.Controllers
             LanNameBD[3] = "Spanish";
             LanNameBD[4] = "Bulgarian";
         }
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-            
-        }
-
+        
 
         private ActionWithWords AWW = new ActionWithWords();
         private AiControl AC = new AiControl();

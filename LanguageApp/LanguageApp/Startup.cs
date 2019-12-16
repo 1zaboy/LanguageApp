@@ -1,13 +1,11 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using LanguageApp.Model;
+
+
 
 namespace LanguageApp
 {
@@ -25,31 +23,7 @@ namespace LanguageApp
         {
 
             services.AddControllersWithViews();
-
-            //services.AddDbContext<ApplicationUser>(options =>
-            //options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddDefaultIdentity<ApplicationUser>()
-            //    .AddDefaultUI(UIFramework.Bootstrap4)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //.AddJwtBearer(options =>
-            //{
-            //    options.RequireHttpsMetadata = false;
-            //    options.SaveToken = true;
-            //    options.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidIssuer = "ValidIssuer",
-            //        ValidAudience = "ValidateAudience",
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("IssuerSigningSecretKey")),
-            //        ValidateLifetime = true,
-            //        ValidateIssuerSigningKey = true,
-            //        ClockSkew = System.TimeSpan.Zero
-            //    };
-            //});
-            //services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>();
-
+            
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

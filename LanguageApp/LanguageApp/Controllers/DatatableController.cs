@@ -14,13 +14,7 @@ namespace LanguageApp.Controllers
     public class DatatableController : Controller
     {
         DataForTable DFT = new DataForTable();
-
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+       
 
         [Route("GetJsonDataTopTan")]
         public string GetJsonDataTopTan()

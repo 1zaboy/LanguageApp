@@ -80,9 +80,9 @@ export class EditorBox extends Component {
 
         var res = []
         //        var r = this.props.textValue.replace(/\B\p{L}+\B/gu, ":");
-        if (this.state.value.trim() != "") {
+        if (this.state.value.trim() !== "") {
             this.state.value && this.state.value.replace(/\p{L}+|[,]|[.]|[?]|[:]|[']|["]/gu, (md, link, text) => {
-                res.push(md != ',' && md != '.' && md != '?' && md != ':' && md != '\'' && md != '\"' ?
+                res.push(md !== ',' && md !== '.' && md !== '?' && md !== ':' && md !== '\'' && md !== '"' ?
                     <span onMouseOver={this.onMouseOverEvent} onInput={this.onChangeSpan}
                         data-toggle="tooltip" title={this.state.dataToggle} data-placement="top"> {md}
                         <span class="tooltiptext">Tooltip text</span>

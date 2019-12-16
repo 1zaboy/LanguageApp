@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { TextPage } from '../TextPages/MainPageForText';
-import { EditorBox } from '../TextPages/EditorBox';
-import { render } from "react-dom";
-import { $ } from "jquery";
-import { Router } from 'react-router-dom';
-import { browserHistory } from 'react-router'
-import { isLog } from "./auth";
 
 export class Login extends Component {
     static displayName = Login.name;
 
     constructor(props) {
         super(props);
-        this.state = { userid: "", currentCount: 0, ValueName: '', ValuePassword: '', ValuePassword2: '', ValuePassword2: '', ResponseText: '', dopPoly: false, isLog: false };
+        this.state = { userid: "", currentCount: 0, ValueName: '', ValuePassword: '', ValuePassword2: '', ResponseText: '', dopPoly: false, isLog: false };
         this.incrementCounter = this.incrementCounter.bind(this);
 
         this.NameChange = this.NameChange.bind(this);
@@ -98,11 +92,11 @@ export class Login extends Component {
 
     loadData() {
         var xhr = new XMLHttpRequest();
-        xhr.open("get", "/api/Login/IsLoginCompleted?" + 'name=' + this.state.ValueName + '&password=' + this.state.ValuePassword, true);
+        xhr.open("get", "/api/Login/IsLoginCompleted?name=" + this.state.ValueName + "&password=" + this.state.ValuePassword, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
             //this.setState({ ResponseText: data });
-            if (data == "-1") {
+            if (data === "-1") {
                 alert("Error enter name or/and password");
                 this.setState({ dopPoly: true });
             } else {
@@ -115,12 +109,11 @@ export class Login extends Component {
 
     loadData2() {
         var xhr = new XMLHttpRequest();
-        if (this.state.ValuePassword == this.state.ValuePassword2) {
-            xhr.open("get", "/api/Login/AddUser?" + 'name=' + this.state.ValueName + '&password=' + this.state.ValuePassword, true);
+        if (this.state.ValuePassword === this.state.ValuePassword2) {
+            xhr.open("get", "/api/Login/AddUser?name=" + this.state.ValueName + "&password=" + this.state.ValuePassword, true);
             xhr.onload = function () {
-                var data = JSON.parse(xhr.responseText);
-                //this.setState({ ResponseText: data });
-                if (data == "-1") {
+                var data = JSON.parse(xhr.responseText);                
+                if (data === "-1") {
                     alert("Error");                    
                 } else {
                     this.setState({ isLog: true, dopPoly: false, userid: data });                     

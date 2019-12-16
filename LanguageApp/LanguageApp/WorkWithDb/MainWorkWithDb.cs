@@ -15,38 +15,7 @@ namespace LanguageApp.WorkWithDb
         {
             // Register the factory
             DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
-        }
-
-        public List<Users> GetUsersWithDb()
-        {
-            List<Users> LUsers_return = new List<Users>();
-            try
-            {
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
-                using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
-                {
-                    connection.ConnectionString = "Data Source = " + ConnectionString;
-                    connection.Open();
-
-                    using (SQLiteCommand command = new SQLiteCommand(connection))
-                    {
-                        command.CommandText = @"SELECT * FROM Users";
-                        command.CommandType = CommandType.Text;
-                        var reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            LUsers_return.Add(new Users() { IdTable = (int)reader["IdTable"], Password = (string)reader["Password"], UserName = (string)reader["UserName"] });
-                        }
-                    }
-                }
-                return LUsers_return;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message.ToString());
-                return null;
-            }
-        }
+        }       
 
         public bool LoginUser(string name, string password)
         {

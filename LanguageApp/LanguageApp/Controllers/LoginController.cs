@@ -13,13 +13,7 @@ namespace LanguageApp.Controllers
     [Route("api/[controller]")]
     public class LoginController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
+        
         MainWorkWithDb mainWorkWithDb = new MainWorkWithDb();
 
         [Route("IsLoginCompleted")]
