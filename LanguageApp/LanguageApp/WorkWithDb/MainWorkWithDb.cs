@@ -15,7 +15,9 @@ namespace LanguageApp.WorkWithDb
         {
             // Register the factory
             DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
-        }       
+            factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+        }
+        SQLiteFactory factory = new SQLiteFactory();
 
         public bool LoginUser(string name, string password)
         {
@@ -30,8 +32,7 @@ namespace LanguageApp.WorkWithDb
         {
             try
             {
-                string t = "-1";
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                string t = "-1";                
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
                     connection.ConnectionString = "Data Source = " + ConnectionString;
@@ -61,22 +62,20 @@ namespace LanguageApp.WorkWithDb
         {
             try
             {
-                List<Users> LUsers_return = new List<Users>();
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                List<Users> LUsers_return = new List<Users>();                
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
                     connection.ConnectionString = "Data Source = " + ConnectionString;
                     connection.Open();
-
                     using (SQLiteCommand command = new SQLiteCommand(connection))
-                    {
-                        command.CommandText = @"UPDATE Users SET DTLogin = datetime('now') WHERE UserName = '" + name + "' AND Password = '" + password + "'";
+                    {                        
+                        command.CommandText = @"UPDATE Users SET DTLogin = datetime('now','localtime') WHERE UserName = '" + name + @"' AND Password = '" + password + @"'";
                         command.CommandType = CommandType.Text;
-                        var reader = 1;// command.ExecuteNonQuery();
+                        var reader = command.ExecuteNonQuery();
                         if (reader != 1)
-                            throw new Exception("Error");
-
+                            throw new Exception("Error");                        
                     }
+                    connection.Close();
                 }
                 return true;
             }
@@ -91,7 +90,7 @@ namespace LanguageApp.WorkWithDb
             try
             {
                 List<Users> LUsers_return = new List<Users>();
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
                     connection.ConnectionString = "Data Source = " + ConnectionString;
@@ -107,7 +106,9 @@ namespace LanguageApp.WorkWithDb
                             LUsers_return.Add(new Users() { IdTable = (Int64)reader["IdTable"], Password = (string)reader["Password"], UserName = (string)reader["UserName"] });
                             break;
                         }
+                        reader.Close();
                     }
+                    connection.Close();
                 }
                 return LUsers_return.Count() > 0 ? true : false;
             }
@@ -123,8 +124,7 @@ namespace LanguageApp.WorkWithDb
             {
                 if (IsUserAvailability(name, password))
                     return false;
-
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
                     connection.ConnectionString = "Data Source = " + ConnectionString;
@@ -132,7 +132,7 @@ namespace LanguageApp.WorkWithDb
 
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
-                        command.CommandText = @"INSERT INTO Users(UserName, Password, DTLogin) VALUES ('" + name + "','" + password + "',DateTime('now'));";
+                        command.CommandText = @"INSERT INTO Users(UserName, Password, DTLogin) VALUES ('" + name + "','" + password + "',datetime('now','localtime'));";
                         command.CommandType = CommandType.Text;
                         var reader = command.ExecuteNonQuery();
                     }
@@ -150,8 +150,7 @@ namespace LanguageApp.WorkWithDb
         {
             try
             {
-                List<Users> LUsers_return = new List<Users>();
-                SQLiteFactory factory = (SQLiteFactory)DbProviderFactories.GetFactory("System.Data.SQLite");
+                List<Users> LUsers_return = new List<Users>();                
                 using (SQLiteConnection connection = (SQLiteConnection)factory.CreateConnection())
                 {
                     connection.ConnectionString = "Data Source = " + ConnectionString;

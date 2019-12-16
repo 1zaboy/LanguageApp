@@ -41,6 +41,7 @@ namespace LanguageApp.WorkWithDb
                         {
                             strItem.Add((string)reader["Namelanguage"]);
                         }
+                        reader.Close();
                         return strItem;
                     }
                 }
@@ -70,7 +71,7 @@ namespace LanguageApp.WorkWithDb
                        '" + textword + @"',
                        '" + (Math.Round(item.Value, 1) * 10).ToString() + @"',
                        '" + item.Key + @"',
-                       DateTime('now')
+                       datetime('now','localtime')
                    );";
                     ExeReq(strRes);
                 }
@@ -96,7 +97,7 @@ namespace LanguageApp.WorkWithDb
                     VALUES (                        
                         '" + userid + @"',
                         '" + textword + @"',
-                        DateTime('now')
+                        datetime('now','localtime')
                     );";
                 ExeReq(strRes);
 
@@ -134,7 +135,8 @@ namespace LanguageApp.WorkWithDb
                         {
                             var s = reader1.GetDouble("Proc").ToString();
                             LUsers_return.Add(new Result() { Lan = (string)reader1["Namelanguage"], Proc = reader1.GetInt32("Proc") / 10.0, Text = (string)reader1["Text"] });                            
-                        }   
+                        }
+                        reader1.Close();
                     }
                 }
                 return LUsers_return;
